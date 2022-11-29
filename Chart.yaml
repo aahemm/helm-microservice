@@ -3,14 +3,13 @@ apiVersion: v2
 name: microservice
 version: 0.6.0
 appVersion: 0.6.0
-description: A Helm chart which provide a DRY microservice deployment mechanism
+description: A Helm chart which provides a DRY microservice deployment mechanism
 keywords:
   - microservice
   - template
   - DRY
   - generic
 source:
-  - https://github.com/cetic/helm-microservice
+  - https://github.com/aahemm/helm-microservice
 maintainers:
-  - name: terence-bigtt
-  - name: alexnuttinck
+  - name: aliakbar-hemmati
