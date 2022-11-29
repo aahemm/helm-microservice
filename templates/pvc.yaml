@@ -1,1 +1,15 @@
-{{- include "pvc" . -}}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.volumes.pvc.name }}
+spec:
+  {{- if .Values.volumes.pvc.class }}
+  storageClassName: {{ .Values.volumes.pvc.class }}
+  {{- end }}
+  accessModes:
+    {{- range $accessMode := .Values.volumes.pvc.accessModes }}
+    - {{ $accessMode }}
+    {{- end }}
+  resources:
+    requests:
+      storage: {{ .Values.volumes.pvc.size }}
