@@ -128,9 +128,15 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
 resources:
   limits:
-    cpu: 100
+    cpu: 100m
     memory: 200Mi
   requests:
     cpu: 100m

@@ -102,6 +102,18 @@ spec:
             periodSeconds: {{ .Values.readiness.periodSeconds }}
             failureThreshold: {{ .Values.readiness.failureThreshold }}
       {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       {{- if .Values.volumes.enabled }}
       volumes:
         {{- range $conf := .Values.volumes.configMaps }}
