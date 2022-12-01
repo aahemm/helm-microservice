@@ -1,11 +1,11 @@
 ---
 apiVersion: v2
-name: microservice
+name: app
 version: 0.6.0
 appVersion: 0.6.0
-description: A Helm chart which provides a DRY microservice deployment mechanism
+description: A Helm chart which provides a DRY application deployment mechanism
 keywords:
-  - microservice
+  - application
   - template
   - DRY
   - generic
