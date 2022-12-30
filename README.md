@@ -28,7 +28,7 @@ The federating chart will provide the configuration for each microservices in it
 ### Add Helm repository
 
 ```bash
-helm repo add cetic https://cetic.github.io/helm-charts
+helm repo add cetic https://aahemm.github.io/helm-microservice
 helm repo update
 ```
 
