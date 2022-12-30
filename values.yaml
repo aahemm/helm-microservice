@@ -8,6 +8,7 @@ global:
    # list of key: value
    # GLOBAL1: value
 
+hostNetwork: false
 ## Set default image, imageTag, and imagePullPolicy.
 ## ref: https://hub.docker.com/r/apache/nifi/
 ##

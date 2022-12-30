@@ -47,6 +47,7 @@ spec:
         {{- end }}
       {{- end }}
       {{- end }}
+      hostNetwork: {{ .Values.hostNetwork }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
