@@ -76,9 +76,8 @@ spec:
           {{- if .Values.volumes.enabled }}
           volumeMounts:
             {{- range $conf := .Values.volumes.configMaps }}
-            - mountPath: {{ $conf.mountPath }}/{{ $conf.name }}
+            - mountPath: {{ $conf.mountPath }}
               name: {{ $conf.name }}-volume
-              subPath: {{ $conf.name }}
             {{- end }}
             {{- if .Values.volumes.pvc.enabled }}
             - mountPath: {{ .Values.volumes.pvc.mountPath }}
