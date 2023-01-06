@@ -17,7 +17,7 @@
 *.bak
 *.tmp
 *~
-
+*.tgz
 # Various IDEs
 .project
 .idea/
