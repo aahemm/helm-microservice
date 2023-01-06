@@ -75,6 +75,15 @@ readiness:
   periodSeconds: 5
   failureThreshold: 3
 
+
+updateStrategy: {}
+  ## for stateless apps, Default
+  # type: RollingUpdate
+  # rollingUpdate: {}
+
+  ## for stateful apps: 
+  # type: Recreate
+
 volumes:
   enabled: false
   pvc:
