@@ -134,6 +134,7 @@ ingress:
       serviceName: web
       path: /
   tls: []
+  pathType: Prefix
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
