@@ -83,8 +83,17 @@ spec:
               name: {{ $conf.name }}-volume
             {{- end }}
             {{- if .Values.volumes.pvc.enabled }}
+            {{- if .Values.volumes.pvc.mountPath }}
             - mountPath: {{ .Values.volumes.pvc.mountPath }}
               name: {{ .Values.volumes.pvc.existing_claim | default .Values.volumes.pvc.name }}-volume
+            {{- else }}
+            {{- $vols := .Values.volumes }}
+            {{- range $subpath := $vols.pvc.subPaths }}
+            - mountPath: {{ $subpath.mountPath }}
+              name: {{ $vols.pvc.existing_claim | default $vols.pvc.name }}-volume
+              subPath:  {{ $subpath.subPath }}
+            {{- end }}
+            {{- end }}
             {{- end }}
           {{- end }}
           resources:

@@ -89,8 +89,14 @@ volumes:
   pvc:
     enabled: false
     existing_claim:
-    name: pvc
+    name: my-data
     mountPath: /pv
+    # if subPath is used mountPath must be empty 
+    subPaths:
+    - mountPath: /data
+      subPath: data
+    - mountPath: /var/lib/logs
+      subPath: logs
     size: 1G
     class:
     accessModes:
