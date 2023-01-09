@@ -16,6 +16,6 @@ entries:
     - name: aliakbar-hemmati
     name: app
     urls:
-    - https://github.com/aahemm/helm-microservice/releases/download/0.6.0/app-0.6.0.tgz
+    - https://github.com/aahemm/helm-microservice/releases/download/v0.6.0/app-0.6.0.tgz
     version: 0.6.0
-generated: "2022-12-12T21:05:53.533681167+03:30"
+generated: "2023-01-09T21:05:53.533681167+03:30"
