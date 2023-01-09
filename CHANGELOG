@@ -1,0 +1,4 @@
+v0.6.0:
+- Add node selector and tolerations 
+- Add update strategy for deployment
+- Add hostNetwork for deployment
