@@ -28,7 +28,7 @@ The federating chart will provide the configuration for each microservices in it
 ### Add Helm repository
 
 ```bash
-helm repo add cetic https://aahemm.github.io/helm-microservice
+helm repo add app https://aahemm.github.io/helm-microservice
 helm repo update
 ```
 
@@ -52,7 +52,6 @@ For other configurations, please see the [values.yaml](values.yaml) file. This f
 Install the microservice helm chart with a release name `my-release`:
 
 ```bash
-helm repo add app aahemm.github.io/aahemm/helm-microservice
 helm install my-release app/app
 ```
 
