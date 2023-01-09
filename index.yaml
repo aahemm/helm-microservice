@@ -2,10 +2,10 @@ apiVersion: v1
 entries:
   app:
   - apiVersion: v2
-    appVersion: 0.6.0
-    created: "2023-01-06T21:05:53.534646071+03:30"
+    appVersion: 0.6.1
+    created: "2023-01-09T19:57:25.390486413+03:30"
     description: A Helm chart which provides a DRY application deployment mechanism
-    digest: 6b4904252a42b3f4ee69dcb53a22659f97fd1216797b84c46acdd18724e722bc
+    digest: 1ee8eee34857ed3083ece4b22ca75533c5b73a2f03e65a2de948d780903ef442
     icon: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
     keywords:
     - application
@@ -16,6 +16,23 @@ entries:
     - name: aliakbar-hemmati
     name: app
     urls:
-    - https://github.com/aahemm/helm-microservice/releases/download/v0.6.0/app-0.6.0.tgz
+    - https://github.com/aahemm/helm-microservice/releases/download/v0.6.1/app-0.6.1.tgz/app-0.6.1.tgz
+    version: 0.6.1
+  - apiVersion: v2
+    appVersion: 0.6.0
+    created: "2023-01-09T19:57:25.389179257+03:30"
+    description: A Helm chart which provides a DRY application deployment mechanism
+    digest: 06792030c27906d164827daa12866f3414396a9ffebe357eece70b682e35e13c
+    icon: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
+    keywords:
+    - application
+    - template
+    - DRY
+    - generic
+    maintainers:
+    - name: aliakbar-hemmati
+    name: app
+    urls:
+    - https://github.com/aahemm/helm-microservice/releases/download/v0.6.1/app-0.6.1.tgz/app-0.6.0.tgz
     version: 0.6.0
-generated: "2023-01-09T21:05:53.533681167+03:30"
+generated: "2023-01-09T19:57:25.387554486+03:30"
