@@ -52,7 +52,8 @@ For other configurations, please see the [values.yaml](values.yaml) file. This f
 Install the microservice helm chart with a release name `my-release`:
 
 ```bash
-helm install my-release cetic/microservice
+helm repo add app aahemm.github.io/aahemm/helm-microservice
+helm install my-release app/app
 ```
 
 ## Uninstallation
@@ -65,7 +66,7 @@ helm uninstall my-release
 
 ## Contributing
 
-Feel free to contribute by making a [pull request](https://github.com/cetic/helm-microservice/pull/new/master).
+Feel free to contribute by making a [pull request](https://github.com/aahemm/helm-microservice/pull/new/master).
 
 Please read the official [Contribution Guide](https://github.com/helm/charts/blob/master/CONTRIBUTING.md) from Helm for more information on how you can contribute to this Chart.
 
