@@ -1,3 +1,4 @@
+- remove multiple pvcs
 - remove template-ish files in `templates` for resources
 - automatic creation of helm package and index 
 - add statefulset 
