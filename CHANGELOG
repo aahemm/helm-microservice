@@ -1,3 +1,5 @@
+v0.6.1: 
+- SubPath for PVC mounted on the pod
 v0.6.0:
 - Add node selector and tolerations 
 - Add update strategy for deployment
