@@ -4,3 +4,4 @@
 - add statefulset 
 - clean up default `values.yaml` file
 - improve readme.md
+- hostAliases

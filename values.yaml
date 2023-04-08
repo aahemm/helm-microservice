@@ -3,15 +3,21 @@
 # Declare variables to be passed into your templates.
 
 global:
+  ## If you use `deployment: false` (meaning you are using StatefulSet) set this to 1 or 0 
   replicaCount: 1
   environment: {}
    # list of key: value
    # GLOBAL1: value
 
+## Set this value to true to use Deployment object. 
+## If you need StatefulSet set this to false. 
+deployment: true 
+
+## If you neeed your pod to have the same network as its host,
+## set this to true
 hostNetwork: false
+
 ## Set default image, imageTag, and imagePullPolicy.
-## ref: https://hub.docker.com/r/apache/nifi/
-##
 image:
   repository: ""
   tag: ""
@@ -77,13 +83,17 @@ readiness:
 
 
 updateStrategy: {}
-  ## for stateless apps, Default
+  ## For stateless apps, Default
   # type: RollingUpdate
   # rollingUpdate: {}
 
-  ## for stateful apps: 
+  ## For stateful apps 
+  ## It is recommended to set `deployment: false` for 
+  ## stateful apps and not use updateStrategy at all 
   # type: Recreate
+  
 
+  
 volumes:
   enabled: false
   pvc:
