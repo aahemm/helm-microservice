@@ -76,6 +76,13 @@ spec:
             value: {{ $value | quote }}
           {{- end }}
           {{- end }}
+          {{- if .Values.secretEnv.enabled }}
+          envFrom: 
+          {{- range $name := .Values.secretEnv.secretNames }}
+          - secretRef:
+              name: {{ $name | quote }}
+          {{- end }}
+          {{- end }}
           {{- if .Values.volumes.enabled }}
           volumeMounts:
             {{- range $conf := .Values.volumes.configMaps }}

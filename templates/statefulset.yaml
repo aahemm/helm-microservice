@@ -70,9 +70,16 @@ spec:
             {{- end }}
           {{- if (merge .Values.global.environment .Values.environment) }}
           env:
-          {{- range $name, $value := merge .Values.global.environment .Values.environment}}
-          - name: {{ $name | quote}}
+          {{- range $name, $value := merge .Values.global.environment .Values.environment }}
+          - name: {{ $name | quote }}
             value: {{ $value | quote }}
+          {{- end }}
+          {{- end }}
+          {{- if .Values.secretEnv.enabled }}
+          envFrom: 
+          {{- range $name := .Values.secretEnv.secretNames }}
+          - secretRef:
+              name: {{ $name | quote }}
           {{- end }}
           {{- end }}
           {{- if .Values.volumes.enabled }}
