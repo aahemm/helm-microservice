@@ -3,9 +3,9 @@ entries:
   app:
   - apiVersion: v2
     appVersion: 0.7.1
-    created: "2023-04-08T15:21:06.535019544+03:30"
+    created: "2023-04-08T15:41:18.11595894+03:30"
     description: A Helm chart which provides a DRY application deployment mechanism
-    digest: a898d784a2b72e6167710859152996462f03ea09020576972a791d08ca132dab
+    digest: 37449dad5aa1a51f9bb88098f5ea6a447ff8d469a20e0784d409f8fb03eb7b3b
     icon: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
     keywords:
     - application
