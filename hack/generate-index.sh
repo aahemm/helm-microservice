@@ -7,5 +7,5 @@ then
 fi 
 
 release=$1
-url="https://github.com/aahemm/helm-microservice/releases/download/v$release/app-$release.tgz"
+url="https://github.com/aahemm/helm-microservice/releases/download/v$release"
 helm repo index ./ --merge index.yaml --url $url  
