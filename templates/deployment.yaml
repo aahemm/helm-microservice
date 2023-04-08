@@ -1,3 +1,4 @@
+{{ if .Values.deployment -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -147,3 +148,4 @@ spec:
             claimName: {{ .Values.volumes.pvc.existing_claim | default .Values.volumes.pvc.name }}
       {{- end}}
       {{- end }}
+{{- end }}
