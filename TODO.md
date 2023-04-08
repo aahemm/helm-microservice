@@ -1,7 +1,7 @@
-- add multiple pvcs
-- remove template-ish files in `templates` for resources
-- automatic creation of helm package and index 
-- add statefulset 
-- clean up default `values.yaml` file
-- improve readme.md
-- hostAliases
+- [ ] add multiple pvcs
+- [ ] remove template-ish files in `templates` for resources
+- [ ] automatic creation of helm package and index 
+- [x] add statefulset 
+- [ ] clean up default `values.yaml` file
+- [ ] improve readme.md
+- [ ] hostAliases

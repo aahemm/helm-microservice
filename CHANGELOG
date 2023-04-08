@@ -1,7 +1,8 @@
 v0.7.0:
 - Add statefulset 
 - Add test for statefulset
-- Delete template yaml files 
+- Delete some template yaml files 
+- Use Secret data as environment variable
 v0.6.1: 
 - SubPath for PVC mounted on the pod
 v0.6.0:
