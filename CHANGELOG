@@ -1,3 +1,5 @@
+v0.7.1: 
+- Do not create Deployment if `deployment: false`
 v0.7.0:
 - Add statefulset 
 - Add test for statefulset
