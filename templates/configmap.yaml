@@ -1,5 +1,3 @@
-{{- define "configmap"  }}
-#ConfigMap mounted as volumes
 {{- if .Values.volumes.configMaps }}
 {{- if .Values.volumes.enabled }}
 {{ $root := . }}
@@ -26,4 +24,4 @@ data:
 {{- end }}
 {{- end }}
 {{- end }}
-{{- end }}
+
