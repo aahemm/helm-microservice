@@ -112,9 +112,6 @@ volumes:
     accessModes:
       - ReadWriteOnce
 
-#  configFileCommonHeader: |
-#    line1
-#    line2
 
   configMaps:
     - name: test
