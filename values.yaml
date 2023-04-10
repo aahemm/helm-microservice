@@ -144,6 +144,7 @@ volumes:
 #        - source: config.conf
 #          destination: application2.conf
 
+automountServiceAccountToken: false
 
 ingress:
   enabled: false
