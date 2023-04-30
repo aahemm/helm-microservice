@@ -1,6 +1,6 @@
 # A Helm Chart for DRY microservice deployments
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![version](https://img.shields.io/github/tag/cetic/helm-microservice.svg?label=release)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![version](https://img.shields.io/github/tag/aahemm/helm-microservice.svg?label=release)
 
 ## Introduction
 
