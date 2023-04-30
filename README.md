@@ -69,6 +69,13 @@ Feel free to contribute by making a [pull request](https://github.com/aahemm/hel
 
 Please read the official [Contribution Guide](https://github.com/helm/charts/blob/master/CONTRIBUTING.md) from Helm for more information on how you can contribute to this Chart.
 
+To create a package from chart: 
+- Update chart version in `Chart.yaml` file
+- Run `helm package .` in the root of project
+- Move the generated `app-$version.tgz` file to `hack/`
+- Run `./generate-index.sh $version` in `hack/` and copy new lines in `hack/index.taml` to `index.yaml`
+- Upload the `.tgz` file to releases 
+ 
 ## License
 
 [Apache License 2.0](/LICENSE)

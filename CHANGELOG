@@ -1,3 +1,6 @@
+v0.8.0:
+- Add securityContext for deployment and sts
+- Add podSecurityContext for deplpoyment and sts
 v0.7.1: 
 - Do not create Deployment if `deployment: false`
 - Fix problem with ConfigMap and Service
