@@ -5,3 +5,4 @@
 - [ ] clean up default `values.yaml` file
 - [ ] improve readme.md
 - [ ] hostAliases
+- [ ] do not create configmap if it is empty in `values.yaml`
