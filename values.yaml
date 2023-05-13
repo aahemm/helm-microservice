@@ -122,12 +122,12 @@ volumes:
       - ReadWriteOnce
 
 
-  configMaps:
-    - name: test
-      mountPath: /test
-      data:
-        test.conf: |
-          hello
+  configMaps: []
+    # - name: test
+    #   mountPath: /test
+    #   data:
+    #     test.conf: |
+    #       hello
 #          hello2
 
 #    - name: test-from-file
