@@ -19,8 +19,8 @@ image:
 
   #replicaCount: 1
 
-# command: ["/bin/sh","-c"]
-# args: ["echo 'consuming a message'; sleep 5"]
+setCommand: true
+args: "sleep inf"
 
 nameOverride: ""
 fullnameOverride: ""
@@ -106,7 +106,7 @@ volumes:
 #    line1
 #    line2
 
-  configMaps: {}
+  configMaps: []
 
 #    - name: test-from-file
 #      mountPath: /test2
