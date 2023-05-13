@@ -61,11 +61,14 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if .Values.command }}
-          command: {{ .Values.command }}
+          {{- if .Values.setCommand }}
+          command: 
+          - /bin/sh
+          - -c
           {{- end }}
           {{- if .Values.args }}
-          args: {{ .Values.args }}
+          args: 
+          - {{ .Values.args }}
           {{- end }}
           ports:
             {{- range .Values.services -}}
