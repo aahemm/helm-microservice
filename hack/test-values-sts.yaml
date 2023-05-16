@@ -68,7 +68,7 @@ volumes:
   enabled: true
   pvc:
     enabled: true
-    existing_claim: ""
+    existingClaim: null
     name: my-data
     mountPath: ""
     # if subPath is used mountPath must be empty 

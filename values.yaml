@@ -107,7 +107,10 @@ volumes:
   enabled: false
   pvc:
     enabled: false
-    existing_claim: null 
+
+    ## if this is not null the name will be 
+    ## ignored and no pvc will be created  
+    existingClaim: null 
     name: my-data
     mountPath: /pv
     # if subPath is used mountPath must be empty 
