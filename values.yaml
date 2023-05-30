@@ -25,7 +25,7 @@ image:
 
   #replicaCount: 1
 
-# setCommand: ["/bin/sh","-c"]
+# setCommand: true
 # args: "echo 'consuming a message'; sleep 5"
 
 nameOverride: ""
