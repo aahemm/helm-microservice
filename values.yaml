@@ -159,8 +159,9 @@ ingress:
       servicePort: 8000
       serviceName: web
       path: /
+      pathType: Prefix
   tls: []
-  pathType: Prefix
+  
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
