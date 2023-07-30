@@ -1,3 +1,7 @@
+v0.10.1:
+- Correct `pathType` in values file 
+- Add `tls` section to ingress object 
+
 v0.10.0:
 - Replace `volumes.pvc.existing_claim` with  `volumes.pvc.existingClaim`
 - Set default value of `volumes.pvc.existingClaim` explicitly to null
