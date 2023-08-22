@@ -8,3 +8,4 @@
 - [ ] do not create configmap if it is empty in `values.yaml`
 - [ ] add labels to all objects
 - [ ] add labels to specific objects (deployment, pod, etc.)
+- [ ] create cronjob
