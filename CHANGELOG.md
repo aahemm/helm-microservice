@@ -1,3 +1,6 @@
+v0.10.2
+- Add `podLabels` to label `Deployment` and `Statefulset` pods
+
 v0.10.1:
 - Correct `pathType` in values file 
 - Add `tls` section to ingress object 
