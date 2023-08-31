@@ -1,7 +1,7 @@
 apiVersion: v1
 entries:
   app:
-- apiVersion: v2
+  - apiVersion: v2
     appVersion: 0.10.2
     created: "2023-08-31T15:50:02.035454106+03:30"
     description: A Helm chart which provides a DRY application deployment mechanism
