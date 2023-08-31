@@ -31,6 +31,9 @@ image:
 nameOverride: ""
 fullnameOverride: ""
 
+## Pod Labels
+# podLabels: {}
+
 ## Optionally specify an imagePullSecret.
 ## Secret must be manually created in the namespace.
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/

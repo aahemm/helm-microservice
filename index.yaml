@@ -1,6 +1,23 @@
 apiVersion: v1
 entries:
   app:
+- apiVersion: v2
+    appVersion: 0.10.2
+    created: "2023-08-31T15:50:02.035454106+03:30"
+    description: A Helm chart which provides a DRY application deployment mechanism
+    digest: 78157785f45c6060a2ee185138057c80af18b4ee28cf172981e5759d5acb0558
+    icon: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
+    keywords:
+    - application
+    - template
+    - DRY
+    - generic
+    maintainers:
+    - name: aliakbar-hemmati
+    name: app
+    urls:
+    - https://github.com/aahemm/helm-microservice/releases/download/v0.10.2/app-0.10.2.tgz
+    version: 0.10.2
   - apiVersion: v2
     appVersion: 0.10.1
     created: "2023-07-30T14:16:01.970472775+03:30"
