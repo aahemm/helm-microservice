@@ -1,3 +1,9 @@
+v0.11.0:
+- Set default value of `resources` to nil 
+- Set default value of `services` to empty list
+- Add `subPath` for configmap 
+- Improve test scripts and reorganize hack directory 
+
 v0.10.2
 - Add `podLabels` to label `Deployment` and `Statefulset` pods
 
