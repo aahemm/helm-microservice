@@ -9,3 +9,5 @@
 - [ ] add labels to all objects
 - [ ] add labels to specific objects (deployment, pod, etc.)
 - [ ] create cronjob
+- [ ] improve values for pvc and configmap 
+- [ ] use secret as config file in pods
