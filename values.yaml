@@ -54,14 +54,14 @@ rbac: false
 annotations: {}
 
 # List of services
-services:
-  - name: web
-    type: ClusterIP
-    annotations: {}
-    specs:
-    - port: 8000
-      targetPort: 8000
-      name: http
+services: []
+  # - name: web
+  #   type: ClusterIP
+  #   annotations: {}
+  #   specs:
+  #   - port: 8000
+  #     targetPort: 8000
+  #     name: http
 #targetPort: is the port the container accepts traffic on, 
 #port: is the abstracted Service port, which can be any port other pods use to access the Service
 #https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.16/#serviceport-v1-core
@@ -175,13 +175,13 @@ tolerations: []
 
 affinity: {}
 
-resources:
-  limits:
-    cpu: 100m
-    memory: 200Mi
-  requests:
-    cpu: 100m
-    memory: 200Mi
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 200Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 200Mi
 
 podSecurityContext: {}
   # fsGroup: 2000
