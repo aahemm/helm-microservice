@@ -1,0 +1,30 @@
+global:
+  replicaCount: 1
+
+image:
+  repository: "nginx"
+  tag: "1.21.6"
+  pullPolicy: IfNotPresent
+
+  #replicaCount: 1
+deployment: false
+
+volumes:
+  enabled: true
+  configMaps: 
+   - name: test
+     mountPath: /usr/share/nginx/html/file.conf
+     subPath: file.conf
+     data:
+       file.conf: |
+         another hello
+
+
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+
