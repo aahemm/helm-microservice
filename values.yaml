@@ -149,6 +149,13 @@ volumes:
 #      files:
 #        - source: config.conf
 #          destination: application2.conf
+#    - name: test3
+#      mountPath: /test3/myfilename.conf
+#      subPath: myfilename.conf
+#      data:
+#        myfilename.conf: |
+#          hello
+#          hello2
 
 automountServiceAccountToken: false
 

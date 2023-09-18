@@ -98,6 +98,9 @@ spec:
             {{- range $conf := .Values.volumes.configMaps }}
             - mountPath: {{ $conf.mountPath }}
               name: {{ $conf.name }}-volume
+            {{- if $conf.subPath }}
+              subPath: {{ $conf.subPath }} 
+            {{- end }}
             {{- end }}
             {{- if .Values.volumes.pvc.enabled }}
             {{- if .Values.volumes.pvc.mountPath }}
