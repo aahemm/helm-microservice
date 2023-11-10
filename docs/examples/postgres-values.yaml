@@ -1,0 +1,43 @@
+global:
+  replicaCount: 1
+
+image:
+  repository: "postgres"
+  tag: "14.7"
+  pullPolicy: Always
+
+deployment: false 
+
+services:
+  - name: db
+    type: ClusterIP
+    annotations: {}
+    specs:
+    - port: 5432
+      targetPort: 5432
+      name: db
+
+environment:
+  POSTGRES_PASSWORD: password
+  POSTGRES_USER: postgres
+  POSTGRES_DB: postgres
+  PGDATA: /var/lib/postgresql/data/pgdata
+
+volumes:
+  enabled: true
+  pvc:
+    enabled: true 
+    name: postgres
+    mountPath: /var/lib/postgresql/data
+    size: 2G
+    accessModes:
+    - ReadWriteOnce
+  configMaps: []
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 1000Mi
+  requests:
+    cpu: 500m
+    memory: 1000Mi

@@ -1,0 +1,38 @@
+global:
+  replicaCount: 1
+
+image:
+  repository: "stefanprodan/podinfo"
+  tag: "latest"
+  pullPolicy: Always
+
+services:
+- name: web
+  type: ClusterIP
+  annotations: {}
+  specs:
+  - port: 9898
+    targetPort: 9898
+    name: web
+
+ingress:
+  enabled: true
+  annotations: 
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure 
+      traefik.ingress.kubernetes.io/router.tls: "true" 
+      traefik.ingress.kubernetes.io/router.tls.certresolver: "letsencrypt"
+  hosts:
+    - host: api.example.com
+      servicePort: 9898
+      serviceName: web
+      path: /
+      pathType: Prefix
+  tls: []
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 200Mi
+  requests:
+    cpu: 100m
+    memory: 200Mi
