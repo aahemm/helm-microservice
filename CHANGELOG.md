@@ -1,3 +1,8 @@
+v0.12.0:
+- Add `secrets` in volumes to mount secret files into Pods
+- Add examples and docs to deploy postgres, nginx and web application
+- Improve testing and add it to development doc
+
 v0.11.0:
 - Set default value of `resources` to nil 
 - Set default value of `services` to empty list

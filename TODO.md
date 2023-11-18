@@ -3,11 +3,11 @@
 - [ ] automatic creation of helm package and index 
 - [x] add statefulset 
 - [ ] clean up default `values.yaml` file
-- [ ] improve readme.md
+- [x] improve readme.md
 - [ ] hostAliases
 - [ ] do not create configmap if it is empty in `values.yaml`
 - [ ] add labels to all objects
 - [ ] add labels to specific objects (deployment, pod, etc.)
 - [ ] create cronjob
 - [ ] improve values for pvc and configmap 
-- [ ] use secret as config file in pods
+- [x] use secret as config file in pods
