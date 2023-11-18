@@ -104,6 +104,13 @@ spec:
               subPath: {{ $conf.subPath }} 
             {{- end }}
             {{- end }}
+            {{- range $sec := .Values.volumes.secrets }}
+            - mountPath: {{ $sec.mountPath }}
+              name: {{ $sec.name }}-volume
+            {{- if $sec.subPath }}
+              subPath: {{ $sec.subPath }} 
+            {{- end }}
+            {{- end }}
             {{- if .Values.volumes.pvc.enabled }}
             {{- if .Values.volumes.pvc.mountPath }}
             - mountPath: {{ .Values.volumes.pvc.mountPath }}
@@ -155,7 +162,12 @@ spec:
         - name: {{ $conf.name }}-volume
           configMap:
             name: {{ $conf.name }}
-      {{- end }}
+        {{- end }}
+        {{- range $sec := .Values.volumes.secrets }}
+        - name: {{ $sec.name }}-volume
+          secret:
+            secretName: {{ $sec.name }}
+        {{- end }}
       {{- if .Values.volumes.pvc.enabled}}
         - name: {{ .Values.volumes.pvc.existingClaim | default .Values.volumes.pvc.name }}-volume
           persistentVolumeClaim:

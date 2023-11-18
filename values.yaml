@@ -104,8 +104,7 @@ updateStrategy: {}
   ## stateful apps and not use updateStrategy at all 
   # type: Recreate
   
-
-  
+ 
 volumes:
   enabled: false
   pvc:
@@ -127,6 +126,16 @@ volumes:
     accessModes:
       - ReadWriteOnce
 
+## Use secrets to mount file into a Pod
+## The Secret objects must be created before deploying this chart
+## If you use subPath the key in Secret must be same as subPath value
+## Refer to https://kubernetes.io/docs/concepts/configuration/secret/#use-case-dotfiles-in-a-secret-volume for more info
+  secrets: []
+  # - name: test-secret
+  #   mountPath: /test-secret
+  # - name: test-secret-2
+  #   mountPath: /etc/myfile.conf
+  #   subPath: myfile.conf
 
   configMaps: []
     # - name: test
