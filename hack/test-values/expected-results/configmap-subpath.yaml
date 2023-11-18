@@ -1,0 +1,58 @@
+---
+# Source: app/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test
+data:
+  # property-like keys; each key maps to a simple value
+  file.conf: |-
+    another hello
+---
+# Source: app/templates/statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: release-name-app
+  labels:
+    app.kubernetes.io/name: app
+    helm.sh/chart: app-0.11.0
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+spec:
+  serviceName: release-name
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: app
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: app
+        app.kubernetes.io/instance: release-name
+    spec:
+      securityContext:
+        {}
+      automountServiceAccountToken: false
+      hostNetwork: false
+      containers:
+        - name: app
+          securityContext:
+            {}
+          image: "nginx:1.21.6"
+          imagePullPolicy: IfNotPresent
+          ports:
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html/file.conf
+              name: test-volume
+              subPath: file.conf
+          resources:
+            {}
+      volumes:
+        - name: test-volume
+          configMap:
+            name: test
+---
+# Source: app/templates/rbac.yaml
+#RBAC and service account
