@@ -7,7 +7,7 @@
 - Commit changes and push it to github
 
 ## Test new version of chart
-- Run `helm template . > /tmp/helm-result.yaml` in the root of the project  
+- Run `helm template ./ --values ./hack/test-values/secret-file-deployment.yaml  > /tmp/helm-result.yaml` in the root of the project  
 - Compare outputs: `diff /tmp/helm-result.yaml hack/test-values/expected-results/some-file.yaml`  
 - For each new test result in `hack/test-values/expected-results` run this in the root of the project:
 ```sh
