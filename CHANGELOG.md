@@ -1,3 +1,8 @@
+v0.13.0:
+- Use Pod template for StatefulSet and Deployment 
+- Add `dnsConfig` and `dnsPolicy` fields to Pod template
+- Improve document for testing helm chart
+
 v0.12.0:
 - Add `secrets` in volumes to mount secret files into Pods
 - Add examples and docs to deploy postgres, nginx and web application
