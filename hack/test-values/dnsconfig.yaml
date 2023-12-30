@@ -1,0 +1,41 @@
+global:
+  replicaCount: 1
+  environment: {}
+   
+image:
+  repository: nginx
+  tag: "1.21.3"
+  pullPolicy: IfNotPresent
+
+services:
+  - name: web
+    type: ClusterIP
+    annotations: {}
+    specs:
+    - port: 8000
+      targetPort: 8000
+      name: http
+
+volumes:
+  enabled: true
+  pvc:
+    enabled: true
+    existingClaim: null
+    name: my-data
+    mountPath: ""
+    subPaths:
+    - mountPath: /data
+      subPath: data
+    - mountPath: /var/lib/logs
+      subPath: logs
+    size: 1G
+    accessModes:
+      - ReadWriteOnce
+
+  configMaps: []
+
+dnsPolicy: "None"
+dnsConfig: 
+  nameservers:
+  - 10.202.10.202
+  - 10.202.10.102

@@ -168,6 +168,10 @@ volumes:
 
 automountServiceAccountToken: false
 
+# set dns config for the Pod 
+dnsConfig: {}
+dnsPolicy: null
+
 ingress:
   enabled: false
   annotations: {}
