@@ -1,0 +1,179 @@
+---
+# Source: app/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test
+data:
+  # property-like keys; each key maps to a simple value
+  test.conf: |-
+    hello
+---
+# Source: app/templates/pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1G
+---
+# Source: app/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-app-svc-web
+  labels:
+    app.kubernetes.io/name: release-name-app-svc-web
+    helm.sh/chart: app-0.13.0
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: app
+    app.kubernetes.io/instance: release-name
+  ports:
+    - name: http
+      port: 8000
+      protocol: TCP
+      targetPort: 8000
+---
+# Source: app/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-app-svc-console
+  labels:
+    app.kubernetes.io/name: release-name-app-svc-console
+    helm.sh/chart: app-0.13.0
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: app
+    app.kubernetes.io/instance: release-name
+  ports:
+    - name: http
+      port: 9000
+      protocol: TCP
+      targetPort: 9000
+---
+# Source: app/templates/statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: release-name-app
+  labels:
+    app.kubernetes.io/name: app
+    helm.sh/chart: app-0.13.0
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+spec:
+  serviceName: release-name
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: app
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: app
+        app.kubernetes.io/instance: release-name
+    spec:
+      
+      securityContext:
+        {}
+      automountServiceAccountToken: false
+      hostNetwork: false
+      containers:
+        - name: app
+          securityContext:
+            {}
+          image: "myrepo.com/my-image:v1.2.3"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8000
+              protocol: TCP
+            - name: http
+              containerPort: 9000
+              protocol: TCP
+          env:
+          - name: "VAR1"
+            value: "value1"
+          volumeMounts:
+            - mountPath: /test
+              name: test-volume
+            - mountPath: /data
+              name: my-data-volume
+              subPath:  data
+            - mountPath: /var/lib/logs
+              name: my-data-volume
+              subPath:  logs
+          resources:
+            limits:
+              cpu: 100m
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 200Mi
+      volumes:
+        - name: test-volume
+          configMap:
+            name: test
+        - name: my-data-volume
+          persistentVolumeClaim:
+            claimName: my-data
+---
+# Source: app/templates/rbac.yaml
+#RBAC and service account
+---
+# Source: app/templates/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: release-name-app-monitor-service-monitor-1
+  labels:
+    app.kubernetes.io/name: app
+    helm.sh/chart: app-0.13.0
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: release-name-app-svc-web
+      helm.sh/chart: app-0.13.0
+      app.kubernetes.io/instance: release-name
+      app.kubernetes.io/managed-by: Helm
+  endpoints:
+  - port: http
+    interval: 15s
+    path: /metrics
+---
+# Source: app/templates/servicemonitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: release-name-app-monitor-service-monitor-2
+  labels:
+    app.kubernetes.io/name: app
+    helm.sh/chart: app-0.13.0
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: release-name-app-svc-console
+      helm.sh/chart: app-0.13.0
+      app.kubernetes.io/instance: release-name
+      app.kubernetes.io/managed-by: Helm
+  endpoints:
+  - port: http
+    interval: 15s
+    path: /metrics
