@@ -1,0 +1,52 @@
+{{- $root:= . }}
+{{- range $serviceMonitor := .Values.serviceMonitors }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "microservice.fullname" $root }}-monitor-{{ $serviceMonitor.name }}
+  labels:
+    app.kubernetes.io/name: {{ include "microservice.name" $root }}
+    helm.sh/chart: {{ include "microservice.chart" $root }}
+    app.kubernetes.io/instance: {{ $root.Release.Name }}
+    app.kubernetes.io/managed-by: {{ $root.Release.Service }}
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "microservice.fullname" $root }}-svc-{{ $serviceMonitor.serviceName }}
+      helm.sh/chart: {{ include "microservice.chart" $root }}
+      app.kubernetes.io/instance: {{ $root.Release.Name }}
+      app.kubernetes.io/managed-by: {{ $root.Release.Service }}
+  {{- with $serviceMonitor.namespaceSelector }}
+  namespaceSelector:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  endpoints:
+  {{- range $endPoint := $serviceMonitor.endPoints }}
+  - port: {{ $endPoint.port }}
+    interval: {{ $endPoint.interval }}
+    path: {{ $endPoint.path }}
+    {{- with $endPoint.scrapeTimeout }}
+    scrapeTimeout: {{ . }}
+    {{- end }}
+    {{- with $endPoint.relabelings }}
+    relabelings:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- with $endPoint.metricRelabelings }}
+    metricRelabelings:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- with $endPoint.scheme }}
+    scheme: {{ . }}
+    {{- end }}
+    {{- with $endPoint.tlsConfig }}
+    tlsConfig:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- end }}
+  {{- with $serviceMonitor.targetLabels }}
+  targetLabels:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+{{- end -}}

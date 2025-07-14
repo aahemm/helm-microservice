@@ -189,6 +189,15 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+serviceMonitors: []
+  # - name: service-monitor-1
+  #   serviceName: service-1
+  #   endPoints:
+  #     - port: metrics
+  #       interval: 15s
+  #       path: /metrics
+
+
 nodeSelector: {}
 
 tolerations: []
