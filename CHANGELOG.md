@@ -1,3 +1,8 @@
+v0.14.0:
+- Add copyright of previous maintainer
+- Add servicemonitor for services
+- Remove some empty objects and extra newlines from deployment and statefulset
+
 v0.13.0:
 - Use Pod template for StatefulSet and Deployment 
 - Add `dnsConfig` and `dnsPolicy` fields to Pod template
