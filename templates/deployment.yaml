@@ -31,6 +31,6 @@ spec:
         {{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
-    spec:
-      {{- include "microservice.pod" . | nindent 6 }}
+    spec: 
+      {{- include "microservice.pod" . | nindent 6 | trimPrefix "\n" }}
 {{- end }}

@@ -1,25 +1,4 @@
-{{- define "microservice.pod" -}}
-{{- if or .Values.imagePullSecrets .Values.imageCredentials }}
-imagePullSecrets:
-{{- end }}
-{{- if .Values.imagePullSecrets }}
-- name: {{ .Values.imagePullSecrets }}
-{{- end }}
-{{- if .Values.dnsPolicy }}
-dnsPolicy: {{ .Values.dnsPolicy }}
-{{- end }}
-{{- with .Values.dnsConfig }}
-dnsConfig:
-  {{- toYaml . | nindent 2 }}
-{{- end }}
-{{- if .Values.imageCredentials }}
-- name: {{ include "microservice.name" . }}-docker-credentials
-{{- end }}
-{{- if .Values.serviceAccount }}
-serviceAccountName: {{ .Values.serviceAccount }}
-{{- end }}
-securityContext:
-  {{- toYaml .Values.podSecurityContext | nindent 2 }}
+{{- define "microservice.pod" }}
 automountServiceAccountToken: {{ .Values.automountServiceAccountToken }}
 {{- if .Values.hostAliases }}
 hostAliases:
@@ -34,8 +13,10 @@ hostAliases:
 hostNetwork: {{ .Values.hostNetwork }}
 containers:
   - name: {{ .Chart.Name }}
+{{- if .Values.securityContext }}
     securityContext:
       {{- toYaml .Values.securityContext | nindent 6 }}
+{{- end }}
     image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
     imagePullPolicy: {{ .Values.image.pullPolicy }}
     {{- if .Values.setCommand }}
@@ -99,8 +80,10 @@ containers:
       {{- end }}
       {{- end }}
     {{- end }}
+{{- if .Values.resources }}
     resources:
       {{- toYaml .Values.resources | nindent 6 }}
+{{- end }}
 {{- if .Values.liveness.enabled }}
     livenessProbe:
       httpGet:
@@ -148,4 +131,4 @@ volumes:
       claimName: {{ .Values.volumes.pvc.existingClaim | default .Values.volumes.pvc.name }}
 {{- end }}
 {{- end }}
-{{- end -}}
+{{- end }}

@@ -1,26 +1,4 @@
 ---
-# Source: app/templates/configmap.yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: test
-data:
-  # property-like keys; each key maps to a simple value
-  test.conf: |-
-    hello
----
-# Source: app/templates/pvc.yaml
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: my-data
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1G
----
 # Source: app/templates/service.yaml
 apiVersion: v1
 kind: Service
@@ -85,16 +63,11 @@ spec:
       labels:
         app.kubernetes.io/name: app
         app.kubernetes.io/instance: release-name
-    spec:
-      
-      securityContext:
-        {}
+    spec:      
       automountServiceAccountToken: false
       hostNetwork: false
       containers:
         - name: app
-          securityContext:
-            {}
           image: "myrepo.com/my-image:v1.2.3"
           imagePullPolicy: IfNotPresent
           ports:
@@ -107,15 +80,6 @@ spec:
           env:
           - name: "VAR1"
             value: "value1"
-          volumeMounts:
-            - mountPath: /test
-              name: test-volume
-            - mountPath: /data
-              name: my-data-volume
-              subPath:  data
-            - mountPath: /var/lib/logs
-              name: my-data-volume
-              subPath:  logs
           resources:
             limits:
               cpu: 100m
@@ -123,16 +87,6 @@ spec:
             requests:
               cpu: 100m
               memory: 200Mi
-      volumes:
-        - name: test-volume
-          configMap:
-            name: test
-        - name: my-data-volume
-          persistentVolumeClaim:
-            claimName: my-data
----
-# Source: app/templates/rbac.yaml
-#RBAC and service account
 ---
 # Source: app/templates/servicemonitor.yaml
 apiVersion: monitoring.coreos.com/v1
