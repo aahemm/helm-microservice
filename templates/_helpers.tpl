@@ -1,3 +1,4 @@
+{{/* Copyright 2022 github.com/cetic */}}
 {{/* Generate basic labels */}}
 {{- define "chart.label" }}
   labels:

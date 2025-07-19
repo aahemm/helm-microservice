@@ -1,3 +1,4 @@
+# Copyright 2022 github.com/cetic
 {{- if and (.Values.volumes.pvc.enabled) (not .Values.volumes.pvc.existingClaim) }}
 apiVersion: v1
 kind: PersistentVolumeClaim

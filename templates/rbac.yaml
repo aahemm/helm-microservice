@@ -1,3 +1,4 @@
+# Copyright 2022 github.com/cetic
 {{- $sa := .Values.serviceAccount | default "default" }}
 {{- if .Values.createServiceAccount }}
 apiVersion: v1
