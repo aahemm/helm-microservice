@@ -6,7 +6,7 @@ metadata:
   name: release-name-app-svc-web
   labels:
     app.kubernetes.io/name: release-name-app-svc-web
-    helm.sh/chart: app-0.13.0
+    helm.sh/chart: app-0.14.0
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/managed-by: Helm
 spec:
@@ -27,7 +27,7 @@ metadata:
   name: release-name-app-svc-console
   labels:
     app.kubernetes.io/name: release-name-app-svc-console
-    helm.sh/chart: app-0.13.0
+    helm.sh/chart: app-0.14.0
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/managed-by: Helm
 spec:
@@ -48,7 +48,7 @@ metadata:
   name: release-name-app
   labels:
     app.kubernetes.io/name: app
-    helm.sh/chart: app-0.13.0
+    helm.sh/chart: app-0.14.0
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/managed-by: Helm
 spec:
@@ -88,6 +88,27 @@ spec:
               cpu: 100m
               memory: 200Mi
 ---
+# Source: app/templates/configmap.yaml
+# Copyright 2022 github.com/cetic
+---
+# Source: app/templates/deployment.yaml
+# Copyright 2022 github.com/cetic
+---
+# Source: app/templates/ingress.yaml
+# Copyright 2022 github.com/cetic
+---
+# Source: app/templates/pvc.yaml
+# Copyright 2022 github.com/cetic
+---
+# Source: app/templates/rbac.yaml
+# Copyright 2022 github.com/cetic
+---
+# Source: app/templates/secret-docker.yaml
+# Copyright 2022 github.com/cetic
+---
+# Source: app/templates/service.yaml
+# Copyright 2022 github.com/cetic
+---
 # Source: app/templates/servicemonitor.yaml
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
@@ -95,20 +116,25 @@ metadata:
   name: release-name-app-monitor-service-monitor-1
   labels:
     app.kubernetes.io/name: app
-    helm.sh/chart: app-0.13.0
+    helm.sh/chart: app-0.14.0
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/managed-by: Helm
 spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: release-name-app-svc-web
-      helm.sh/chart: app-0.13.0
+      helm.sh/chart: app-0.14.0
       app.kubernetes.io/instance: release-name
       app.kubernetes.io/managed-by: Helm
   endpoints:
   - port: http
     interval: 15s
     path: /metrics
+    authorization:
+      credentials:
+        key: token
+        name: some-secret
+      type: Bearer
 ---
 # Source: app/templates/servicemonitor.yaml
 apiVersion: monitoring.coreos.com/v1
@@ -117,14 +143,14 @@ metadata:
   name: release-name-app-monitor-service-monitor-2
   labels:
     app.kubernetes.io/name: app
-    helm.sh/chart: app-0.13.0
+    helm.sh/chart: app-0.14.0
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/managed-by: Helm
 spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: release-name-app-svc-console
-      helm.sh/chart: app-0.13.0
+      helm.sh/chart: app-0.14.0
       app.kubernetes.io/instance: release-name
       app.kubernetes.io/managed-by: Helm
   endpoints:

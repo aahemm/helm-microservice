@@ -59,6 +59,11 @@ serviceMonitors:
       - port: http
         interval: 15s
         path: /metrics
+        authorization:
+          type: Bearer
+          credentials:
+            name: some-secret
+            key: token
   - name: service-monitor-2
     serviceName: console
     endPoints:
