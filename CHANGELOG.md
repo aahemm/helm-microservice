@@ -1,3 +1,6 @@
+v0.14.1:
+- Add authentication to servicemonitor
+
 v0.14.0:
 - Add copyright of previous maintainer
 - Add servicemonitor for services

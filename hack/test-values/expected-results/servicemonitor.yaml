@@ -6,7 +6,7 @@ metadata:
   name: release-name-app-svc-web
   labels:
     app.kubernetes.io/name: release-name-app-svc-web
-    helm.sh/chart: app-0.14.0
+    helm.sh/chart: app-0.14.1
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/managed-by: Helm
 spec:
@@ -27,7 +27,7 @@ metadata:
   name: release-name-app-svc-console
   labels:
     app.kubernetes.io/name: release-name-app-svc-console
-    helm.sh/chart: app-0.14.0
+    helm.sh/chart: app-0.14.1
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/managed-by: Helm
 spec:
@@ -48,7 +48,7 @@ metadata:
   name: release-name-app
   labels:
     app.kubernetes.io/name: app
-    helm.sh/chart: app-0.14.0
+    helm.sh/chart: app-0.14.1
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/managed-by: Helm
 spec:
@@ -116,14 +116,14 @@ metadata:
   name: release-name-app-monitor-service-monitor-1
   labels:
     app.kubernetes.io/name: app
-    helm.sh/chart: app-0.14.0
+    helm.sh/chart: app-0.14.1
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/managed-by: Helm
 spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: release-name-app-svc-web
-      helm.sh/chart: app-0.14.0
+      helm.sh/chart: app-0.14.1
       app.kubernetes.io/instance: release-name
       app.kubernetes.io/managed-by: Helm
   endpoints:
@@ -143,14 +143,14 @@ metadata:
   name: release-name-app-monitor-service-monitor-2
   labels:
     app.kubernetes.io/name: app
-    helm.sh/chart: app-0.14.0
+    helm.sh/chart: app-0.14.1
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/managed-by: Helm
 spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: release-name-app-svc-console
-      helm.sh/chart: app-0.14.0
+      helm.sh/chart: app-0.14.1
       app.kubernetes.io/instance: release-name
       app.kubernetes.io/managed-by: Helm
   endpoints:

@@ -197,6 +197,7 @@ serviceMonitors: []
   #     - port: metrics
   #       interval: 15s
   #       path: /metrics
+  ## The secret has to be created by user
   #       authorization:
   #         type: Bearer
   #         credentials:
