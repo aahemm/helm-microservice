@@ -197,6 +197,11 @@ serviceMonitors: []
   #     - port: metrics
   #       interval: 15s
   #       path: /metrics
+  #       authorization:
+  #         type: Bearer
+  #         credentials:
+  #           name: bearer-token-secret-name
+  #           key: token
 
 
 nodeSelector: {}

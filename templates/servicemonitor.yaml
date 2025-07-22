@@ -26,6 +26,10 @@ spec:
   - port: {{ $endPoint.port }}
     interval: {{ $endPoint.interval }}
     path: {{ $endPoint.path }}
+    {{- with $endPoint.authorization }}
+    authorization:
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
     {{- with $endPoint.scrapeTimeout }}
     scrapeTimeout: {{ . }}
     {{- end }}
