@@ -1,0 +1,143 @@
+---
+# Source: app/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test
+data:
+  # property-like keys; each key maps to a simple value
+  test.conf: |-
+    hello
+---
+# Source: app/templates/pvc.yaml
+# Copyright 2022 github.com/cetic
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-data
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1G
+---
+# Source: app/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: release-name-app-svc-web
+  labels:
+    app.kubernetes.io/name: release-name-app-svc-web
+    helm.sh/chart: app-0.14.1
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: app
+    app.kubernetes.io/instance: release-name
+  ports:
+    - name: http
+      port: 8000
+      protocol: TCP
+      targetPort: 8000
+---
+# Source: app/templates/deployment.yaml
+# Copyright 2022 github.com/cetic
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: release-name-app
+  labels:
+    app.kubernetes.io/name: app
+    helm.sh/chart: app-0.14.1
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: app
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: app
+        app.kubernetes.io/instance: release-name
+    spec:      
+      automountServiceAccountToken: false
+      hostNetwork: false
+      containers:
+        - name: app
+          image: "myrepo.com/my-image:v1.2.3"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8000
+              protocol: TCP
+          env:
+          - name: "VAR1"
+            value: "value1"
+          volumeMounts:
+            - mountPath: /test
+              name: test-volume
+            - mountPath: /data
+              name: my-data-volume
+              subPath:  data
+            - mountPath: /var/lib/logs
+              name: my-data-volume
+              subPath:  logs
+          resources:
+            limits:
+              cpu: 100m
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 200Mi
+      volumes:
+        - name: test-volume
+          configMap:
+            name: test
+        - name: my-data-volume
+          persistentVolumeClaim:
+            claimName: my-data
+---
+# Source: app/templates/ingress.yaml
+# Copyright 2022 github.com/cetic
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: release-name-app
+  labels:
+    app.kubernetes.io/name: release-name-app
+    helm.sh/chart: app-0.14.1
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+spec:
+  rules:
+    - host: "chart-example.local"
+      http:
+        paths:
+          - path: /
+            pathType: 
+            backend:
+              service:
+                name: release-name-app-svc-web
+                port: 
+                  number: 8000
+---
+# Source: app/templates/configmap.yaml
+# Copyright 2022 github.com/cetic
+---
+# Source: app/templates/rbac.yaml
+# Copyright 2022 github.com/cetic
+---
+# Source: app/templates/secret-docker.yaml
+# Copyright 2022 github.com/cetic
+---
+# Source: app/templates/service.yaml
+# Copyright 2022 github.com/cetic
