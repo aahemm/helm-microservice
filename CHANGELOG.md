@@ -1,5 +1,6 @@
 v0.14.1:
 - Add authentication to servicemonitor
+- Fix ingress yaml file
 
 v0.14.0:
 - Add copyright of previous maintainer

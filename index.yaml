@@ -3,9 +3,9 @@ entries:
   app:
   - apiVersion: v2
     appVersion: 0.14.1
-    created: "2025-07-22T18:29:40.97188616+03:30"
+    created: "2025-07-26T10:35:44.569951802+03:30"
     description: A Helm chart to deploy (almost) all your services
-    digest: fd320f544b82890ffd389af9d9e5cb1c3025b4d8f2ce218eca38fe0af901e63b
+    digest: 53ce28c55a7589d317aec2cfd1768775c73234ebecc93e771e0c57f2e8bf2437
     keywords:
     - application
     - template
@@ -218,4 +218,4 @@ entries:
     urls:
     - https://github.com/aahemm/helm-microservice/releases/download/v0.6.0/app-0.6.0.tgz
     version: 0.6.0
-generated: "2025-07-22T18:29:40.964991995+03:30"
+generated: "2025-07-26T10:35:44.568483401+03:30"
