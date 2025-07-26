@@ -65,27 +65,7 @@ updateStrategy: {}
   # type: Recreate
 
 volumes:
-  enabled: true
-  pvc:
-    enabled: true
-    existingClaim: null
-    name: my-data
-    mountPath: ""
-    subPaths:
-    - mountPath: /data
-      subPath: data
-    - mountPath: /var/lib/logs
-      subPath: logs
-    size: 1G
-    class:
-    accessModes:
-      - ReadWriteOnce
-  configMaps:
-    - name: test
-      mountPath: /test
-      data:
-        test.conf: |
-          hello
+  enabled: false
 
 ingress:
   enabled: true
