@@ -124,6 +124,10 @@ volumes:
       subPath: logs
     size: 1G
     class:
+    ## Annotations to add to the PVC
+    annotations: {}
+      # example.com/key: value
+      # backup.velero.io/backup-volumes: data
     accessModes:
       - ReadWriteOnce
 

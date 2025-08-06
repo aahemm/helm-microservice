@@ -1,9 +1,12 @@
-# Copyright 2022 github.com/cetic
 {{- if and (.Values.volumes.pvc.enabled) (not .Values.volumes.pvc.existingClaim) }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ .Values.volumes.pvc.name }}
+  {{- if .Values.volumes.pvc.annotations }}
+  annotations:
+    {{- toYaml .Values.volumes.pvc.annotations | nindent 4 }}
+  {{- end }}
 spec:
   {{- if .Values.volumes.pvc.class }}
   storageClassName: {{ .Values.volumes.pvc.class }}
