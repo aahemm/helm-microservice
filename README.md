@@ -48,6 +48,13 @@ To uninstall/delete the `my-release` deployment:
 helm uninstall my-release
 ```
 
+## Credits and Copyright
+
+This project is based on work originally created by [github.com/cetic](https://github.com/cetic) in 2022.
+The original repository can be found at [github.com/cetic/helm-microservice](https://github.com/cetic/helm-microservice).
+
+- Copyright 2022 github.com/cetic
+- Copyright 2025 github.com/aahemm
 
 ## Documentation
 For more information on how to use this helm chart, refer to [docs](./docs/README.md) or 
@@ -63,9 +70,7 @@ an issue or submit a pull request.
  
 ## License
 
-Thid project is licensed under Apache License 2.0. See the [LICENSE](/LICENSE)
-for details.
-
+This project is licensed under the [Apache License 2.0](LICENSE).
 
 
 Thank you for choosing this helm chart! I hope it helps you in deploying 
