@@ -1,4 +1,3 @@
-# Copyright 2022 github.com/cetic
 {{- $root:= . }}
 {{- range $service := .Values.services}}
 ---
