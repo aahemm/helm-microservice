@@ -1,3 +1,9 @@
+v0.15.0:
+- Remove copyright from yaml files and add it to appropriate files
+- Fix removed extra config for pod from its template
+- Automation for running all or individual test
+- Add annotation for PVC
+
 v0.14.1:
 - Add authentication to servicemonitor
 - Fix ingress yaml file

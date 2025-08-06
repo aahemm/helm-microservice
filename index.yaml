@@ -2,6 +2,23 @@ apiVersion: v1
 entries:
   app:
   - apiVersion: v2
+    appVersion: 0.15.0
+    created: "2025-08-06T14:56:19.704771625+03:30"
+    description: A Helm chart to deploy (almost) all your services
+    digest: 00c807c627785442ca99694c4524689cf1e605ffa7b05016e690648133fbb87f
+    keywords:
+    - application
+    - template
+    - DRY
+    - generic
+    maintainers:
+    - name: aliakbar-hemmati
+    - name: github.com/cetic (original author)
+    name: app
+    urls:
+    - https://github.com/aahemm/helm-microservice/releases/download/v0.15.0/app-0.15.0.tgz
+    version: 0.15.0
+  - apiVersion: v2
     appVersion: 0.14.1
     created: "2025-07-26T10:35:44.569951802+03:30"
     description: A Helm chart to deploy (almost) all your services
@@ -218,4 +235,4 @@ entries:
     urls:
     - https://github.com/aahemm/helm-microservice/releases/download/v0.6.0/app-0.6.0.tgz
     version: 0.6.0
-generated: "2025-07-26T10:35:44.568483401+03:30"
+generated: "2025-08-06T14:56:19.69301337+03:30"

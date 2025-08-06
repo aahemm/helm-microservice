@@ -3,8 +3,8 @@
 # Copyright 2025 github.com/aahemm
 apiVersion: v2
 name: app
-version: 0.14.1
-appVersion: 0.14.1
+version: 0.15.0
+appVersion: 0.15.0
 description: A Helm chart to deploy (almost) all your services 
 keywords:
   - application
