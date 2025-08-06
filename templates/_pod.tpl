@@ -1,4 +1,27 @@
 {{- define "microservice.pod" }}
+{{- if or .Values.imagePullSecrets .Values.imageCredentials }}
+imagePullSecrets:
+{{- end }}
+{{- if .Values.imagePullSecrets }}
+- name: {{ .Values.imagePullSecrets }}
+{{- end }}
+{{- if .Values.dnsPolicy }}
+dnsPolicy: {{ .Values.dnsPolicy }}
+{{- end }}
+{{- with .Values.dnsConfig }}
+dnsConfig:
+  {{- toYaml . | nindent 2 }}
+{{- end }}
+{{- if .Values.imageCredentials }}
+- name: {{ include "microservice.name" . }}-docker-credentials
+{{- end }}
+{{- if .Values.serviceAccount }}
+serviceAccountName: {{ .Values.serviceAccount }}
+{{- end }}
+{{- if .Values.podSecurityContext }}
+securityContext:
+  {{- toYaml .Values.podSecurityContext | nindent 2 }}
+{{- end }}
 automountServiceAccountToken: {{ .Values.automountServiceAccountToken }}
 {{- if .Values.hostAliases }}
 hostAliases:
