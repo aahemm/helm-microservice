@@ -16,7 +16,7 @@ metadata:
   name: release-name-app
   labels:
     app.kubernetes.io/name: app
-    helm.sh/chart: app-0.11.0
+    helm.sh/chart: app-0.14.1
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/managed-by: Helm
 spec:
@@ -31,15 +31,11 @@ spec:
       labels:
         app.kubernetes.io/name: app
         app.kubernetes.io/instance: release-name
-    spec:
-      securityContext:
-        {}
+    spec:      
       automountServiceAccountToken: false
       hostNetwork: false
       containers:
         - name: app
-          securityContext:
-            {}
           image: "nginx:1.21.6"
           imagePullPolicy: IfNotPresent
           ports:
@@ -47,12 +43,7 @@ spec:
             - mountPath: /usr/share/nginx/html/file.conf
               name: test-volume
               subPath: file.conf
-          resources:
-            {}
       volumes:
         - name: test-volume
           configMap:
             name: test
----
-# Source: app/templates/rbac.yaml
-#RBAC and service account

@@ -4,33 +4,15 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: my-data
+  annotations:
+    test.annotation/key1: value1
+    test.annotation/key2: value2
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 1G
----
-# Source: app/templates/service.yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: release-name-app-svc-web
-  labels:
-    app.kubernetes.io/name: release-name-app-svc-web
-    helm.sh/chart: app-0.14.1
-    app.kubernetes.io/instance: release-name
-    app.kubernetes.io/managed-by: Helm
-spec:
-  type: ClusterIP
-  selector:
-    app.kubernetes.io/name: app
-    app.kubernetes.io/instance: release-name
-  ports:
-    - name: http
-      port: 8000
-      protocol: TCP
-      targetPort: 8000
 ---
 # Source: app/templates/deployment.yaml
 apiVersion: apps/v1
@@ -39,7 +21,7 @@ metadata:
   name: release-name-app
   labels:
     app.kubernetes.io/name: app
-    helm.sh/chart: app-0.14.1
+    helm.sh/chart: app-VERSION
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/managed-by: Helm
 spec:
@@ -54,28 +36,24 @@ spec:
         app.kubernetes.io/name: app
         app.kubernetes.io/instance: release-name
     spec:      
-      dnsPolicy: None
-      dnsConfig:
-        nameservers:
-        - 10.202.10.202
-        - 10.202.10.102
       automountServiceAccountToken: false
       hostNetwork: false
       containers:
         - name: app
-          image: "nginx:1.21.3"
+          image: "myrepo.com/my-image:v1.2.3"
           imagePullPolicy: IfNotPresent
           ports:
-            - name: http
-              containerPort: 8000
-              protocol: TCP
           volumeMounts:
             - mountPath: /data
               name: my-data-volume
               subPath:  data
-            - mountPath: /var/lib/logs
-              name: my-data-volume
-              subPath:  logs
+          resources:
+            limits:
+              cpu: 100m
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 200Mi
       volumes:
         - name: my-data-volume
           persistentVolumeClaim:

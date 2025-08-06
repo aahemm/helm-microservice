@@ -4,18 +4,12 @@ global:
    # list of key: value
    # GLOBAL1: value
 
-deployment: false 
-hostNetwork: false
+deployment: true
 
 image:
   repository: "myrepo.com/my-image"
   tag: "v1.2.3"
   pullPolicy: IfNotPresent
-
-  #replicaCount: 1
-
-# command: ["/bin/sh","-c"]
-# args: ["echo 'consuming a message'; sleep 5"]
 
 nameOverride: ""
 fullnameOverride: ""
@@ -28,41 +22,13 @@ rbac: false
 annotations: {}
 
 # List of services
-services:
-  - name: web
-    type: ClusterIP
-    annotations: {}
-    specs:
-    - port: 8000
-      targetPort: 8000
-      name: http
-
-environment:
-  VAR1: value1
+services: []
 
 #Probes
 liveness:
   enabled: false
-  path: /alive
-  port: 8001
-  initialDelaySeconds: 3
-  periodSeconds: 3
 readiness:
   enabled: false
-  path: /ready
-  port: 8001
-  initialDelaySeconds: 5
-  periodSeconds: 5
-  failureThreshold: 3
-
-
-updateStrategy: {}
-  ## for stateless apps, Default
-  # type: RollingUpdate
-  # rollingUpdate: {}
-
-  ## for stateful apps: 
-  # type: Recreate
 
 volumes:
   enabled: true
@@ -75,32 +41,17 @@ volumes:
     subPaths:
     - mountPath: /data
       subPath: data
-    - mountPath: /var/lib/logs
-      subPath: logs
     size: 1G
     class:
     accessModes:
       - ReadWriteOnce
-  configMaps:
-    - name: test
-      mountPath: /test
-      data:
-        test.conf: |
-          hello
+    annotations:
+      test.annotation/key1: "value1"
+      test.annotation/key2: "value2"
+  configMaps: {}
 
 ingress:
   enabled: false
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: chart-example.local
-      servicePort: 8000
-      serviceName: web
-      path: /
-  tls: []
-  pathType: Prefix
-
 
 nodeSelector: {}
 

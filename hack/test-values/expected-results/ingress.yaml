@@ -21,7 +21,6 @@ spec:
       targetPort: 8000
 ---
 # Source: app/templates/deployment.yaml
-# Copyright 2022 github.com/cetic
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -65,7 +64,6 @@ spec:
               memory: 200Mi
 ---
 # Source: app/templates/ingress.yaml
-# Copyright 2022 github.com/cetic
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -90,18 +88,3 @@ spec:
                 name: release-name-app-svc-web
                 port: 
                   number: 8000
----
-# Source: app/templates/configmap.yaml
-# Copyright 2022 github.com/cetic
----
-# Source: app/templates/pvc.yaml
-# Copyright 2022 github.com/cetic
----
-# Source: app/templates/rbac.yaml
-# Copyright 2022 github.com/cetic
----
-# Source: app/templates/secret-docker.yaml
-# Copyright 2022 github.com/cetic
----
-# Source: app/templates/service.yaml
-# Copyright 2022 github.com/cetic

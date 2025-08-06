@@ -88,27 +88,6 @@ spec:
               cpu: 100m
               memory: 200Mi
 ---
-# Source: app/templates/configmap.yaml
-# Copyright 2022 github.com/cetic
----
-# Source: app/templates/deployment.yaml
-# Copyright 2022 github.com/cetic
----
-# Source: app/templates/ingress.yaml
-# Copyright 2022 github.com/cetic
----
-# Source: app/templates/pvc.yaml
-# Copyright 2022 github.com/cetic
----
-# Source: app/templates/rbac.yaml
-# Copyright 2022 github.com/cetic
----
-# Source: app/templates/secret-docker.yaml
-# Copyright 2022 github.com/cetic
----
-# Source: app/templates/service.yaml
-# Copyright 2022 github.com/cetic
----
 # Source: app/templates/servicemonitor.yaml
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
